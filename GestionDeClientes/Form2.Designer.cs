@@ -110,8 +110,9 @@
             this.btnExportar.Name = "btnExportar";
             this.btnExportar.Size = new System.Drawing.Size(190, 29);
             this.btnExportar.TabIndex = 7;
-            this.btnExportar.Text = "EXPORTAR REGISTROS";
+            this.btnExportar.Text = "Exportar a Excel";
             this.btnExportar.UseVisualStyleBackColor = true;
+            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
             // 
             // Form2
             // 
@@ -127,18 +128,16 @@
             this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.label1f2);
             this.Controls.Add(this.dataGridViewClientes);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(1163, 656);
             this.Name = "Form2";
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.Form2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClientes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
-            //exportar
-            
-            this.btnExportar.Text = "Exportar a Excel";
-            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
 
         }
 

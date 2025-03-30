@@ -44,7 +44,7 @@ namespace GestionDeClientes
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(493, 81);
+            this.panel1.Location = new System.Drawing.Point(512, 145);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(542, 289);
             this.panel1.TabIndex = 2;
@@ -86,12 +86,15 @@ namespace GestionDeClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.BackgroundImage = global::GestionDeClientes.Properties.Resources.objetos_espacio_trabajo_1112_82;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(1103, 590);
+            this.ClientSize = new System.Drawing.Size(1102, 590);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(1120, 637);
             this.Name = "Form1";
             this.Text = "BIENVENIDO A SU GESTORÍA";
             this.Load += new System.EventHandler(this.Form1_Load);

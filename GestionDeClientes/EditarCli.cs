@@ -88,5 +88,15 @@ namespace GestionDeClientes
         {
             // Aquí no parece ser necesario realizar ninguna acción por el momento
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void actnombre_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -65,11 +65,12 @@ namespace GestionDeClientes
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label1.Location = new System.Drawing.Point(225, 55);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(355, 39);
+            this.label1.Size = new System.Drawing.Size(357, 41);
             this.label1.TabIndex = 3;
             this.label1.Text = "CREAR CLIENTE ✔️";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -137,6 +138,7 @@ namespace GestionDeClientes
             this.Controls.Add(this.aggapellido);
             this.Controls.Add(this.aggnombre);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "CrearCli";
             this.Text = "AgregarCli";
             this.Load += new System.EventHandler(this.CrearCli_Load);

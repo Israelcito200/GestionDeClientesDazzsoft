@@ -2,6 +2,7 @@
 using System;
 using System.Data;
 using System.Windows.Forms;
+using ClosedXML.Excel;
 
 namespace GestionDeClientes
 {
@@ -22,7 +23,7 @@ namespace GestionDeClientes
             AgregarBotonEliminar();// Llamar al método para cargar los datos en el DataGridView
         }
 
-        private void CargarClientes()
+        private void CargarClientes(string busqueda = "")
         {
             string connectionString = "server=localhost;database=dbcliente;user=root;password=;";  // Cambiar según tu base de datos
             using (MySqlConnection conn = new MySqlConnection(connectionString))
@@ -30,8 +31,17 @@ namespace GestionDeClientes
                 try
                 {
                     conn.Open();
-                    string query = "SELECT id, nombre, apellido, email FROM clientes";  // Consulta para obtener los datos de los clientes
+                    string query = "SELECT id, nombre, apellido, email FROM clientes";
+
+                    if (!string.IsNullOrWhiteSpace(busqueda))
+                    {
+                        query += " WHERE nombre LIKE @busqueda OR apellido LIKE @busqueda OR email LIKE @busqueda";
+                    }
+
+
+                    // Consulta para obtener los datos de los clientes
                     MySqlDataAdapter dataAdapter = new MySqlDataAdapter(query, conn);
+                    dataAdapter.SelectCommand.Parameters.AddWithValue("@busqueda", "%" + busqueda + "%"); // Parámetro para búsqueda
                     DataTable dataTable = new DataTable();
                     dataAdapter.Fill(dataTable);
                     dataGridViewClientes.DataSource = dataTable;  // Asignar los datos al DataGridView
@@ -42,6 +52,14 @@ namespace GestionDeClientes
                 }
             }
         }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            // Obtener el texto del TextBox y pasarle como parámetro al método CargarClientes
+            string busqueda = txtBuscar.Text;
+            CargarClientes(busqueda); // Recargar los datos filtrados
+        }
+
 
         private void label1f2_Click(object sender, EventArgs e)
         {
@@ -92,7 +110,7 @@ namespace GestionDeClientes
                 formEditar.ShowDialog();
 
                 // Recargar los clientes después de la edición
-               CargarClientes();
+                CargarClientes();
             }
 
             // Verificar si el clic fue en el botón de Eliminar
@@ -160,7 +178,68 @@ namespace GestionDeClientes
 
 
 
+        private void btnExportar_Click(object sender, EventArgs e)
+        {
+            ExportarDatosAExcel();
+        }
+
+        private void ExportarDatosAExcel()
+        {
+            string connectionString = "server=localhost;database=dbcliente;user=root;password=";  // Asegúrate de que tu cadena de conexión sea correcta
+            string query = "SELECT id, nombre, apellido, email FROM clientes";  // Consulta SQL para obtener los datos de los clientes
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    MySqlDataAdapter dataAdapter = new MySqlDataAdapter(query, conn);
+                    DataTable dataTable = new DataTable();
+                    dataAdapter.Fill(dataTable);  // Rellenar el DataTable con los datos de la base de datos
+
+                    // Crear un libro de trabajo Excel
+                    using (XLWorkbook wb = new XLWorkbook())
+                    {
+                        // Crear una hoja llamada "Clientes"
+                        IXLWorksheet ws = wb.Worksheets.Add("Clientes");
+
+                        // Cargar los datos del DataTable a la hoja de Excel
+                        ws.Cell(1, 1).Value = "ID";
+                        ws.Cell(1, 2).Value = "Nombre";
+                        ws.Cell(1, 3).Value = "Apellido";
+                        ws.Cell(1, 4).Value = "Email";
+
+                        // Agregar los datos del DataTable a la hoja Excel
+                        for (int i = 0; i < dataTable.Rows.Count; i++)
+                        {
+                            for (int j = 0; j < dataTable.Columns.Count; j++)
+                            {
+                                ws.Cell(i + 2, j + 1).Value = dataTable.Rows[i][j].ToString();
+                            }
+                        }
+
+                        // Abrir el cuadro de diálogo para elegir dónde guardar el archivo
+                        SaveFileDialog sfd = new SaveFileDialog();
+                        sfd.Filter = "Archivos Excel (*.xlsx)|*.xlsx";
+                        if (sfd.ShowDialog() == DialogResult.OK)
+                        {
+                            // Guardar el archivo Excel en la ubicación seleccionada
+                            wb.SaveAs(sfd.FileName);
+                            MessageBox.Show("Datos exportados a Excel exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al exportar los datos: " + ex.Message);
+                }
 
 
+
+
+
+
+            }
+        }
     }
 }

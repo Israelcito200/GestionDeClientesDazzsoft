@@ -28,8 +28,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListarCli));
-
-            // Inicialización de controles
             this.dataGridViewClientes = new System.Windows.Forms.DataGridView();
             this.label1f2 = new System.Windows.Forms.Label();
             this.btnVolver = new System.Windows.Forms.Button();
@@ -37,8 +35,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.btnExportar = new System.Windows.Forms.Button();
-
-            // Establecer las propiedades del DataGridView de los clientes
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClientes)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // dataGridViewClientes
+            // 
             this.dataGridViewClientes.AllowUserToAddRows = false;
             this.dataGridViewClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewClientes.Location = new System.Drawing.Point(182, 142);
@@ -47,8 +48,9 @@
             this.dataGridViewClientes.RowTemplate.Height = 24;
             this.dataGridViewClientes.Size = new System.Drawing.Size(852, 309);
             this.dataGridViewClientes.TabIndex = 1;
-
-            // Establecer las propiedades del label1f2
+            // 
+            // label1f2
+            // 
             this.label1f2.AutoSize = true;
             this.label1f2.BackColor = System.Drawing.Color.Transparent;
             this.label1f2.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold);
@@ -58,8 +60,9 @@
             this.label1f2.Size = new System.Drawing.Size(154, 38);
             this.label1f2.TabIndex = 2;
             this.label1f2.Text = "NÓMINA";
-
-            // Establecer las propiedades del botón Volver
+            // 
+            // btnVolver
+            // 
             this.btnVolver.Location = new System.Drawing.Point(738, 507);
             this.btnVolver.Name = "btnVolver";
             this.btnVolver.Size = new System.Drawing.Size(160, 29);
@@ -67,8 +70,9 @@
             this.btnVolver.Text = "VOLVER A INICIO";
             this.btnVolver.UseVisualStyleBackColor = true;
             this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
-
-            // Establecer las propiedades del botón Crear Clientes
+            // 
+            // btnAgg
+            // 
             this.btnAgg.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnAgg.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold);
             this.btnAgg.Location = new System.Drawing.Point(278, 507);
@@ -78,8 +82,9 @@
             this.btnAgg.Text = "CREAR CLIENTES";
             this.btnAgg.UseVisualStyleBackColor = false;
             this.btnAgg.Click += new System.EventHandler(this.btnAgg_Click);
-
-            // Establecer las propiedades de la etiqueta de búsqueda
+            // 
+            // label1
+            // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
@@ -89,15 +94,17 @@
             this.label1.Size = new System.Drawing.Size(192, 25);
             this.label1.TabIndex = 5;
             this.label1.Text = "Buscar Registro 🔎";
-
-            // Establecer las propiedades del cuadro de texto para búsqueda
+            // 
+            // txtBuscar
+            // 
             this.txtBuscar.Location = new System.Drawing.Point(362, 109);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(180, 22);
             this.txtBuscar.TabIndex = 6;
             this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
-
-            // Establecer las propiedades del botón Exportar
+            // 
+            // btnExportar
+            // 
             this.btnExportar.Location = new System.Drawing.Point(844, 107);
             this.btnExportar.Name = "btnExportar";
             this.btnExportar.Size = new System.Drawing.Size(190, 29);
@@ -105,12 +112,13 @@
             this.btnExportar.Text = "Exportar a Excel";
             this.btnExportar.UseVisualStyleBackColor = true;
             this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
-
-            // Establecer las propiedades de la ventana
+            // 
+            // ListarCli
+            // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.BackgroundImage = global::GestionDeClientes.Properties.Resources.s; // Fondo de la ventana
+            this.BackgroundImage = global::GestionDeClientes.Properties.Resources.s;
             this.ClientSize = new System.Drawing.Size(1145, 609);
             this.Controls.Add(this.btnExportar);
             this.Controls.Add(this.txtBuscar);
@@ -120,15 +128,17 @@
             this.Controls.Add(this.label1f2);
             this.Controls.Add(this.dataGridViewClientes);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon"))); // Icono de la ventana
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1163, 656);
             this.Name = "ListarCli";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "REGISTROS";
-            this.Load += new System.EventHandler(this.Form2_Load); // Evento al cargar la forma
+            this.Load += new System.EventHandler(this.Form2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClientes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion

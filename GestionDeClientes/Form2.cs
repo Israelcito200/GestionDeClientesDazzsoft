@@ -97,6 +97,9 @@ namespace GestionDeClientes
 
         private void dataGridViewClientes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex < 0 || e.ColumnIndex < 0)
+                return;
+
             if (e.ColumnIndex == dataGridViewClientes.Columns["Editar"].Index && e.RowIndex >= 0)
             {
                 // Obtener los datos de la fila seleccionada

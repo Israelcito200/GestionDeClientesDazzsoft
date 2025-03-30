@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             this.dataGridViewClientes = new System.Windows.Forms.DataGridView();
             this.label1f2 = new System.Windows.Forms.Label();
             this.btnVolver = new System.Windows.Forms.Button();
@@ -38,11 +39,11 @@
             // dataGridViewClientes
             // 
             this.dataGridViewClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewClientes.Location = new System.Drawing.Point(264, 142);
+            this.dataGridViewClientes.Location = new System.Drawing.Point(182, 142);
             this.dataGridViewClientes.Name = "dataGridViewClientes";
             this.dataGridViewClientes.RowHeadersWidth = 51;
             this.dataGridViewClientes.RowTemplate.Height = 24;
-            this.dataGridViewClientes.Size = new System.Drawing.Size(596, 309);
+            this.dataGridViewClientes.Size = new System.Drawing.Size(852, 309);
             this.dataGridViewClientes.TabIndex = 1;
             // 
             // label1f2
@@ -51,7 +52,7 @@
             this.label1f2.BackColor = System.Drawing.Color.Transparent;
             this.label1f2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1f2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1f2.Location = new System.Drawing.Point(258, 86);
+            this.label1f2.Location = new System.Drawing.Point(176, 85);
             this.label1f2.Name = "label1f2";
             this.label1f2.Size = new System.Drawing.Size(132, 32);
             this.label1f2.TabIndex = 2;
@@ -79,7 +80,6 @@
             this.btnAgg.Text = "CREAR CLIENTES";
             this.btnAgg.UseVisualStyleBackColor = false;
             this.btnAgg.Click += new System.EventHandler(this.btnAgg_Click);
-
             // 
             // Form2
             // 
@@ -87,11 +87,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.BackgroundImage = global::GestionDeClientes.Properties.Resources.s;
-            this.ClientSize = new System.Drawing.Size(1082, 609);
+            this.ClientSize = new System.Drawing.Size(1145, 609);
             this.Controls.Add(this.btnAgg);
             this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.label1f2);
             this.Controls.Add(this.dataGridViewClientes);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form2";
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.Form2_Load);

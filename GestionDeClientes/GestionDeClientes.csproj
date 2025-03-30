@@ -87,11 +87,20 @@
     <Compile Include="Form2.Designer.cs">
       <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditarCli.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditarCli.Designer.cs">
+      <DependentUpon>EditarCli.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="CrearCli.resx">
       <DependentUpon>CrearCli.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditarCli.resx">
+      <DependentUpon>EditarCli.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -131,6 +140,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\s.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Properties\edit.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

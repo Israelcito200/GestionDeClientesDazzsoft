@@ -29,6 +29,7 @@ namespace GestionDeClientes
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CrearCli));
             this.aggnombre = new System.Windows.Forms.TextBox();
             this.aggapellido = new System.Windows.Forms.TextBox();
             this.aggemail = new System.Windows.Forms.TextBox();
@@ -135,6 +136,7 @@ namespace GestionDeClientes
             this.Controls.Add(this.aggemail);
             this.Controls.Add(this.aggapellido);
             this.Controls.Add(this.aggnombre);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CrearCli";
             this.Text = "AgregarCli";
             this.Load += new System.EventHandler(this.CrearCli_Load);

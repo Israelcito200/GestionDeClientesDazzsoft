@@ -95,6 +95,8 @@ namespace GestionDeClientes
 
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Cliente guardado exitosamente.");
+
+                    this.Close();
                 }
                 catch (Exception ex)
                 {

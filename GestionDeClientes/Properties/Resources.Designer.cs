@@ -63,6 +63,16 @@ namespace GestionDeClientes.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap edit {
+            get {
+                object obj = ResourceManager.GetObject("edit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap objetos_espacio_trabajo_1112_82 {
             get {
                 object obj = ResourceManager.GetObject("objetos-espacio-trabajo_1112-82", resourceCulture);

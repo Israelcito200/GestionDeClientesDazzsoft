@@ -97,7 +97,7 @@
             // 
             // txtBuscar
             // 
-            this.txtBuscar.Location = new System.Drawing.Point(362, 109);
+            this.txtBuscar.Location = new System.Drawing.Point(383, 110);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(180, 22);
             this.txtBuscar.TabIndex = 6;
@@ -118,7 +118,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.BackgroundImage = global::GestionDeClientes.Properties.Resources.s;
+            this.BackgroundImage = global::GestionDeClientes.Properties.Resources.Y;
             this.ClientSize = new System.Drawing.Size(1145, 609);
             this.Controls.Add(this.btnExportar);
             this.Controls.Add(this.txtBuscar);

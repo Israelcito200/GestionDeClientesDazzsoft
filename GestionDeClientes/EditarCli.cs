@@ -30,12 +30,39 @@ namespace GestionDeClientes
                 return;
             }
 
+            if (string.IsNullOrEmpty(actnombre.Text) || actnombre.Text.Length < 3)
+            {
+                MessageBox.Show("El nombre es obligatorio y debe tener al menos 3 caracteres.");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(actemail.Text) || !IsValidEmail(actemail.Text))
+            {
+                MessageBox.Show("Por favor, ingrese un correo electrónico válido.");
+                return;
+            }
+
+
+
             // Llamada al método para actualizar los datos del cliente
             ActualizarCliente();
         }
 
-        // Método que se encarga de actualizar los datos del cliente en la base de datos
-        private void ActualizarCliente()
+        private bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+            // Método que se encarga de actualizar los datos del cliente en la base de datos
+            private void ActualizarCliente()
         {
             // Cadena de conexión a la base de datos MySQL
             string connectionString = "server=localhost;database=dbcliente;user=root;password=;"; // Ajusta según tu configuración

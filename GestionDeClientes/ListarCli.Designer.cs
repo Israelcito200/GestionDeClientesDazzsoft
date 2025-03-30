@@ -119,7 +119,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.BackgroundImage = global::GestionDeClientes.Properties.Resources.Y;
-            this.ClientSize = new System.Drawing.Size(1145, 609);
+            this.ClientSize = new System.Drawing.Size(1182, 578);
             this.Controls.Add(this.btnExportar);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.label1);
@@ -130,7 +130,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(1163, 656);
+            this.MaximumSize = new System.Drawing.Size(1200, 625);
             this.Name = "ListarCli";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "REGISTROS";

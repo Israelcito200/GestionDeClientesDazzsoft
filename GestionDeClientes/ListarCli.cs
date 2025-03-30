@@ -4,6 +4,8 @@ using System.Data;
 using System.Windows.Forms;
 using ClosedXML.Excel;
 
+
+
 namespace GestionDeClientes
 {
     public partial class ListarCli : Form
@@ -21,6 +23,7 @@ namespace GestionDeClientes
             CargarClientes();  // Llamar al método para cargar clientes al cargar el formulario
             AgregarBotonEditar();  // Añadir el botón de editar
             AgregarBotonEliminar();  // Añadir el botón de eliminar
+            
         }
 
         // Cargar los clientes en el DataGridView, con opción de búsqueda
@@ -233,5 +236,13 @@ namespace GestionDeClientes
                 }
             }
         }
+
+
+   
+
+
+
+
+
     }
 }

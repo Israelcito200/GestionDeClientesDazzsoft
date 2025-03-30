@@ -52,5 +52,12 @@ namespace GestionDeClientes
             this.Hide();  // Ocultar Form2
         }
 
+        private void btnAgg_Click(object sender, EventArgs e)
+        {
+            CrearCli crearClienteForm = new CrearCli();
+            crearClienteForm.Show();
+        }
+
+
     }
 }

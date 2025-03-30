@@ -68,6 +68,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CrearCli.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrearCli.Designer.cs">
+      <DependentUpon>CrearCli.cs</DependentUpon>
+    </Compile>
     <Compile Include="Data\MYDbContext.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -84,6 +90,9 @@
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CrearCli.resx">
+      <DependentUpon>CrearCli.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

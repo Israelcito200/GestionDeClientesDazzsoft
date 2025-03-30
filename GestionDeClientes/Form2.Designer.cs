@@ -31,6 +31,7 @@
             this.dataGridViewClientes = new System.Windows.Forms.DataGridView();
             this.label1f2 = new System.Windows.Forms.Label();
             this.btnVolver = new System.Windows.Forms.Button();
+            this.btnAgg = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClientes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,6 +67,18 @@
             this.btnVolver.Text = "VOLVER A INICIO";
             this.btnVolver.UseVisualStyleBackColor = true;
             this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
+            // 
+            // btnAgg
+            // 
+            this.btnAgg.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnAgg.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgg.Location = new System.Drawing.Point(264, 507);
+            this.btnAgg.Name = "btnAgg";
+            this.btnAgg.Size = new System.Drawing.Size(171, 29);
+            this.btnAgg.TabIndex = 4;
+            this.btnAgg.Text = "CREAR CLIENTES";
+            this.btnAgg.UseVisualStyleBackColor = false;
+            this.btnAgg.Click += new System.EventHandler(this.btnAgg_Click);
 
             // 
             // Form2
@@ -75,6 +88,7 @@
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.BackgroundImage = global::GestionDeClientes.Properties.Resources.s;
             this.ClientSize = new System.Drawing.Size(1082, 609);
+            this.Controls.Add(this.btnAgg);
             this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.label1f2);
             this.Controls.Add(this.dataGridViewClientes);
@@ -91,5 +105,6 @@
         private System.Windows.Forms.DataGridView dataGridViewClientes;
         private System.Windows.Forms.Label label1f2;
         private System.Windows.Forms.Button btnVolver;
+        private System.Windows.Forms.Button btnAgg;
     }
 }

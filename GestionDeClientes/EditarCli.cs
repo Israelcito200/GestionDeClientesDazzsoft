@@ -1,6 +1,7 @@
-﻿using System;
+﻿using GestionDeClientes.Data;
+using System;
+using System.Linq;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 
 namespace GestionDeClientes
 {
@@ -42,9 +43,7 @@ namespace GestionDeClientes
                 return;
             }
 
-
-
-            // Llamada al método para actualizar los datos del cliente
+            // Llamada al método para actualizar los datos del cliente utilizando Entity Framework
             ActualizarCliente();
         }
 
@@ -61,50 +60,41 @@ namespace GestionDeClientes
             }
         }
 
-            // Método que se encarga de actualizar los datos del cliente en la base de datos
-            private void ActualizarCliente()
+        // Método que se encarga de actualizar los datos del cliente en la base de datos usando Entity Framework
+        private void ActualizarCliente()
         {
-            // Cadena de conexión a la base de datos MySQL
-            string connectionString = "server=localhost;database=dbcliente;user=root;password=;"; // Ajusta según tu configuración
-
-            // Abrimos la conexión a la base de datos
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            try
             {
-                try
+                // Usamos el contexto de Entity Framework que ya está definido
+                using (var context = new MYDbContext()) // Asumiendo que ClienteContext es tu DbContext
                 {
-                    conn.Open();
-                    // Consulta SQL para actualizar los datos del cliente
-                    string query = "UPDATE clientes SET nombre = @nombre, apellido = @apellido, email = @email WHERE id = @id";
-
-                    // Ejecutamos la consulta con los parámetros proporcionados
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    // Buscamos al cliente por ID
+                    var cliente = context.Clientes.SingleOrDefault(c => c.Id == clienteId);
+                    if (cliente != null)
                     {
-                        cmd.Parameters.AddWithValue("@id", clienteId);
-                        cmd.Parameters.AddWithValue("@nombre", actnombre.Text);
-                        cmd.Parameters.AddWithValue("@apellido", actapellido.Text);
-                        cmd.Parameters.AddWithValue("@email", actemail.Text);
+                        // Actualizamos los valores del cliente
+                        cliente.Nombre = actnombre.Text;
+                        cliente.Apellido = actapellido.Text;
+                        cliente.Email = actemail.Text;
 
-                        // Ejecutamos la consulta y verificamos si se actualizó algún registro
-                        int filasAfectadas = cmd.ExecuteNonQuery();
+                        // Guardamos los cambios en la base de datos
+                        context.SaveChanges();
 
-                        if (filasAfectadas > 0)
-                        {
-                            // Si se actualizó correctamente, mostramos un mensaje de éxito y cerramos el formulario
-                            MessageBox.Show("Cliente actualizado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            this.Close();
-                        }
-                        else
-                        {
-                            // Si no se pudo actualizar el cliente, mostramos un mensaje de error
-                            MessageBox.Show("No se pudo actualizar el cliente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                        // Mensaje de éxito
+                        MessageBox.Show("Cliente actualizado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Close();
+                    }
+                    else
+                    {
+                        // Si no se encuentra el cliente
+                        MessageBox.Show("Cliente no encontrado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-                catch (Exception ex)
-                {
-                    // En caso de error, mostramos el mensaje correspondiente
-                    MessageBox.Show("Error al actualizar: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+            }
+            catch (Exception ex)
+            {
+                // En caso de error, mostramos el mensaje correspondiente
+                MessageBox.Show("Error al actualizar: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -136,3 +126,4 @@ namespace GestionDeClientes
         }
     }
 }
+

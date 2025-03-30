@@ -1,6 +1,7 @@
-﻿using System;
+﻿using GestionDeClientes.Data;  // Asegúrate de tener la referencia al contexto
+using GestionDeClientes.Models;
+using System;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 
 namespace GestionDeClientes
 {
@@ -46,31 +47,30 @@ namespace GestionDeClientes
                 return;
             }
 
-            // Conexión a la base de datos
-            string connectionString = "server=localhost;database=dbcliente;user=root;password=;";
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            // Crear una nueva instancia de Cliente
+            var nuevoCliente = new Cliente
             {
-                try
+                Nombre = nombre,
+                Apellido = apellido,
+                Email = email
+            };
+
+            // Usar Entity Framework para guardar el nuevo cliente
+            try
+            {
+                using (var context = new MYDbContext())
                 {
-                    conn.Open();
-
-                    // Query para insertar el nuevo cliente
-                    string query = "INSERT INTO clientes (nombre, apellido, email) VALUES (@nombre, @apellido, @email)";
-                    MySqlCommand cmd = new MySqlCommand(query, conn);
-
-                    // Asignar valores a los parámetros de la consulta
-                    cmd.Parameters.AddWithValue("@nombre", nombre);
-                    cmd.Parameters.AddWithValue("@apellido", apellido);
-                    cmd.Parameters.AddWithValue("@email", email);
-
-                    cmd.ExecuteNonQuery(); // Ejecutar la consulta
+                    // Añadir el nuevo cliente
+                    context.Clientes.Add(nuevoCliente);
+                    // Guardar los cambios en la base de datos
+                    context.SaveChanges();
                     MessageBox.Show("Cliente guardado exitosamente.");
                     this.Close(); // Cerrar el formulario después de guardar
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al guardar los datos: " + ex.Message);
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al guardar los datos: " + ex.Message);
             }
         }
 

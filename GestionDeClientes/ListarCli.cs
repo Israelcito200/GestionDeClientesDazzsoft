@@ -1,10 +1,8 @@
-﻿using MySql.Data.MySqlClient;
+﻿using ClosedXML.Excel;
+using GestionDeClientes.Data;
 using System;
-using System.Data;
+using System.Linq;
 using System.Windows.Forms;
-using ClosedXML.Excel;
-
-
 
 namespace GestionDeClientes
 {
@@ -23,37 +21,24 @@ namespace GestionDeClientes
             CargarClientes();  // Llamar al método para cargar clientes al cargar el formulario
             AgregarBotonEditar();  // Añadir el botón de editar
             AgregarBotonEliminar();  // Añadir el botón de eliminar
-            
         }
 
         // Cargar los clientes en el DataGridView, con opción de búsqueda
         private void CargarClientes(string busqueda = "")
         {
-            string connectionString = "server=localhost;database=dbcliente;user=root;password=;";  // Cadena de conexión a la base de datos
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            using (var context = new MYDbContext())
             {
-                try
-                {
-                    conn.Open();
-                    string query = "SELECT id, nombre, apellido, email FROM clientes";  // Consulta SQL para obtener los clientes
+                var clientesQuery = context.Clientes.AsQueryable();
 
-                    // Si se ha ingresado un término de búsqueda, agregar condición WHERE
-                    if (!string.IsNullOrWhiteSpace(busqueda))
-                    {
-                        query += " WHERE nombre LIKE @busqueda OR apellido LIKE @busqueda OR email LIKE @busqueda";
-                    }
-
-                    // Usar MySqlDataAdapter para ejecutar la consulta y llenar un DataTable
-                    MySqlDataAdapter dataAdapter = new MySqlDataAdapter(query, conn);
-                    dataAdapter.SelectCommand.Parameters.AddWithValue("@busqueda", "%" + busqueda + "%"); // Parámetro de búsqueda
-                    DataTable dataTable = new DataTable();
-                    dataAdapter.Fill(dataTable);  // Llenar el DataTable con los resultados de la consulta
-                    dataGridViewClientes.DataSource = dataTable;  // Asignar los datos al DataGridView
-                }
-                catch (Exception ex)
+                if (!string.IsNullOrWhiteSpace(busqueda))
                 {
-                    MessageBox.Show("Error al cargar los clientes: " + ex.Message);  // Manejar errores
+                    clientesQuery = clientesQuery.Where(c => c.Nombre.Contains(busqueda) || c.Apellido.Contains(busqueda) || c.Email.Contains(busqueda));
                 }
+
+                var clientes = clientesQuery.ToList();
+
+                // Asignar los clientes al DataGridView
+                dataGridViewClientes.DataSource = clientes;
             }
         }
 
@@ -145,35 +130,21 @@ namespace GestionDeClientes
         // Eliminar cliente de la base de datos
         private void EliminarCliente(int clienteId)
         {
-            string connectionString = "server=localhost;database=dbcliente;user=root;password=";  // Cadena de conexión a la base de datos
-
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            using (var context = new MYDbContext())
             {
-                try
+                var cliente = context.Clientes.SingleOrDefault(c => c.Id == clienteId);
+
+                if (cliente != null)
                 {
-                    conn.Open();
-                    string query = "DELETE FROM clientes WHERE id = @id";  // Consulta SQL para eliminar el cliente
+                    context.Clientes.Remove(cliente);  // Eliminar el cliente
+                    context.SaveChanges();  // Guardar los cambios en la base de datos
 
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@id", clienteId);  // Añadir parámetro de clienteId
-
-                        int filasAfectadas = cmd.ExecuteNonQuery();  // Ejecutar la consulta
-
-                        if (filasAfectadas > 0)
-                        {
-                            MessageBox.Show("Cliente eliminado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            CargarClientes();  // Recargar la lista de clientes
-                        }
-                        else
-                        {
-                            MessageBox.Show("No se pudo eliminar el cliente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
+                    MessageBox.Show("Cliente eliminado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    CargarClientes();  // Recargar la lista de clientes
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show("Error al eliminar el cliente: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("No se encontró el cliente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -187,62 +158,38 @@ namespace GestionDeClientes
         // Método para exportar datos a Excel
         private void ExportarDatosAExcel()
         {
-            string connectionString = "server=localhost;database=dbcliente;user=root;password=";  // Asegúrate de que la cadena de conexión sea correcta
-            string query = "SELECT id, nombre, apellido, email FROM clientes";  // Consulta SQL para obtener los clientes
-
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            using (var context = new MYDbContext())
             {
-                try
-                {
-                    conn.Open();
-                    MySqlDataAdapter dataAdapter = new MySqlDataAdapter(query, conn);
-                    DataTable dataTable = new DataTable();
-                    dataAdapter.Fill(dataTable);  // Llenar el DataTable con los datos
+                var clientes = context.Clientes.ToList();
 
-                    // Crear un libro de trabajo Excel
-                    using (XLWorkbook wb = new XLWorkbook())
+                using (XLWorkbook wb = new XLWorkbook())
+                {
+                    var ws = wb.Worksheets.Add("Clientes");
+
+                    // Agregar encabezados
+                    ws.Cell(1, 1).Value = "ID";
+                    ws.Cell(1, 2).Value = "Nombre";
+                    ws.Cell(1, 3).Value = "Apellido";
+                    ws.Cell(1, 4).Value = "Email";
+
+                    // Agregar los datos del cliente a Excel
+                    for (int i = 0; i < clientes.Count; i++)
                     {
-                        // Crear una hoja de trabajo
-                        IXLWorksheet ws = wb.Worksheets.Add("Clientes");
-
-                        // Agregar encabezados
-                        ws.Cell(1, 1).Value = "ID";
-                        ws.Cell(1, 2).Value = "Nombre";
-                        ws.Cell(1, 3).Value = "Apellido";
-                        ws.Cell(1, 4).Value = "Email";
-
-                        // Agregar los datos del DataTable a la hoja Excel
-                        for (int i = 0; i < dataTable.Rows.Count; i++)
-                        {
-                            for (int j = 0; j < dataTable.Columns.Count; j++)
-                            {
-                                ws.Cell(i + 2, j + 1).Value = dataTable.Rows[i][j].ToString();
-                            }
-                        }
-
-                        // Mostrar cuadro de diálogo para elegir ubicación de guardado
-                        SaveFileDialog sfd = new SaveFileDialog();
-                        sfd.Filter = "Archivos Excel (*.xlsx)|*.xlsx";
-                        if (sfd.ShowDialog() == DialogResult.OK)
-                        {
-                            wb.SaveAs(sfd.FileName);  // Guardar el archivo Excel
-                            MessageBox.Show("Datos exportados a Excel exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
+                        ws.Cell(i + 2, 1).Value = clientes[i].Id;
+                        ws.Cell(i + 2, 2).Value = clientes[i].Nombre;
+                        ws.Cell(i + 2, 3).Value = clientes[i].Apellido;
+                        ws.Cell(i + 2, 4).Value = clientes[i].Email;
                     }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al exportar los datos: " + ex.Message);  // Manejar errores
+
+                    SaveFileDialog sfd = new SaveFileDialog();
+                    sfd.Filter = "Archivos Excel (*.xlsx)|*.xlsx";
+                    if (sfd.ShowDialog() == DialogResult.OK)
+                    {
+                        wb.SaveAs(sfd.FileName);  // Guardar el archivo Excel
+                        MessageBox.Show("Datos exportados a Excel exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
             }
         }
-
-
-   
-
-
-
-
-
     }
 }

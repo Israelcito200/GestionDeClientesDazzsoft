@@ -1,28 +1,21 @@
-﻿
-namespace GestionDeClientes
+﻿namespace GestionDeClientes
 {
     partial class EditarCli
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
+        // Variable del diseñador necesaria para liberar recursos.
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        // Método para liberar los recursos cuando el formulario es cerrado.
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
             {
-                components.Dispose();
+                components.Dispose(); // Destruye los componentes para liberar recursos.
             }
             base.Dispose(disposing);
         }
 
-       
-
+        // Declaración de controles del formulario (labels, textboxes y botón).
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -35,8 +28,7 @@ namespace GestionDeClientes
         #region Windows Form Designer generated code
 
         /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
+        /// Método necesario para el diseño del formulario. No debe modificarse.
         /// </summary>
         private void InitializeComponent()
         {
@@ -50,9 +42,8 @@ namespace GestionDeClientes
             this.actemail = new System.Windows.Forms.TextBox();
             this.btnactualizar = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
+
+            // label1: Título del formulario.
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft YaHei UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -61,9 +52,8 @@ namespace GestionDeClientes
             this.label1.Size = new System.Drawing.Size(349, 44);
             this.label1.TabIndex = 0;
             this.label1.Text = "EDITAR CLIENTE ✏️";
-            // 
-            // label2
-            // 
+
+            // label2: Etiqueta para el campo de nombre.
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -72,10 +62,8 @@ namespace GestionDeClientes
             this.label2.Size = new System.Drawing.Size(117, 25);
             this.label2.TabIndex = 1;
             this.label2.Text = "NOMBRE :";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // label3
-            // 
+
+            // label3: Etiqueta para el campo de apellido.
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -84,10 +72,8 @@ namespace GestionDeClientes
             this.label3.Size = new System.Drawing.Size(124, 27);
             this.label3.TabIndex = 2;
             this.label3.Text = "APELLIDO :";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
-            // 
-            // label4
-            // 
+
+            // label4: Etiqueta para el campo de correo.
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -96,31 +82,26 @@ namespace GestionDeClientes
             this.label4.Size = new System.Drawing.Size(108, 27);
             this.label4.TabIndex = 3;
             this.label4.Text = "CORREO :";
-            // 
-            // actnombre
-            // 
+
+            // actnombre: Caja de texto para ingresar o editar el nombre.
             this.actnombre.Location = new System.Drawing.Point(326, 160);
             this.actnombre.Name = "actnombre";
             this.actnombre.Size = new System.Drawing.Size(263, 22);
             this.actnombre.TabIndex = 4;
-            this.actnombre.TextChanged += new System.EventHandler(this.actnombre_TextChanged);
-            // 
-            // actapellido
-            // 
+
+            // actapellido: Caja de texto para ingresar o editar el apellido.
             this.actapellido.Location = new System.Drawing.Point(326, 211);
             this.actapellido.Name = "actapellido";
             this.actapellido.Size = new System.Drawing.Size(263, 22);
             this.actapellido.TabIndex = 5;
-            // 
-            // actemail
-            // 
+
+            // actemail: Caja de texto para ingresar o editar el correo.
             this.actemail.Location = new System.Drawing.Point(326, 269);
             this.actemail.Name = "actemail";
             this.actemail.Size = new System.Drawing.Size(263, 22);
             this.actemail.TabIndex = 6;
-            // 
-            // btnactualizar
-            // 
+
+            // btnactualizar: Botón para actualizar los datos del cliente.
             this.btnactualizar.BackColor = System.Drawing.Color.PowderBlue;
             this.btnactualizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnactualizar.ForeColor = System.Drawing.Color.Black;
@@ -131,11 +112,10 @@ namespace GestionDeClientes
             this.btnactualizar.Text = "ACTUALIZAR";
             this.btnactualizar.UseVisualStyleBackColor = false;
             this.btnactualizar.Click += new System.EventHandler(this.btnactualizar_Click);
-            // 
-            // EditarCli
-            // 
-            this.BackgroundImage = global::GestionDeClientes.Properties.Resources.s;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+
+            // Configuración final del formulario.
+            this.BackgroundImage = global::GestionDeClientes.Properties.Resources.s; // Imagen de fondo del formulario.
+            this.ClientSize = new System.Drawing.Size(800, 450); // Tamaño de la ventana.
             this.Controls.Add(this.btnactualizar);
             this.Controls.Add(this.actemail);
             this.Controls.Add(this.actapellido);
@@ -146,15 +126,15 @@ namespace GestionDeClientes
             this.Controls.Add(this.label1);
             this.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon"))); // Icono del formulario.
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(818, 497);
             this.Name = "EditarCli";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "EDITAR";
+            this.Text = "EDITAR"; // Título del formulario.
+            this.Load += new System.EventHandler(this.EditarCli_Load_1); // Evento que se ejecuta al cargar el formulario.
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion

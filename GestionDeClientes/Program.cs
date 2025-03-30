@@ -13,7 +13,7 @@ namespace GestionDeClientes
             Application.SetCompatibleTextRenderingDefault(false);
 
             // Aquí se debe cargar el formulario principal
-            Application.Run(new Form1());  // Asegúrate de que Form1 sea el formulario que quieres abrir
+            Application.Run(new Bienvenida());  // Asegúrate de que Form1 sea el formulario que quieres abrir
         }
     }
 }

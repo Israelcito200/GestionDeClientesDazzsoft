@@ -1,17 +1,16 @@
-﻿
-namespace GestionDeClientes
+﻿namespace GestionDeClientes
 {
     partial class CrearCli
     {
         /// <summary>
-        /// Required designer variable.
+        /// Recurso requerido por el diseñador.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Clean up any resources being used.
+        /// Liberar los recursos en uso.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">True si se deben liberar los recursos administrados.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -21,100 +20,95 @@ namespace GestionDeClientes
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
+        #region Inicialización del formulario
 
         /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
+        /// Método requerido por el diseñador de Windows Forms.
         /// </summary>
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CrearCli));
+
+            // Campos de entrada
             this.aggnombre = new System.Windows.Forms.TextBox();
             this.aggapellido = new System.Windows.Forms.TextBox();
             this.aggemail = new System.Windows.Forms.TextBox();
+
+            // Botón para guardar
+            this.btncrearenbase = new System.Windows.Forms.Button();
+
+            // Etiquetas
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.btncrearenbase = new System.Windows.Forms.Button();
+
             this.SuspendLayout();
-            // 
-            // aggnombre
-            // 
+
+            // Configuración del campo 'Nombre'
             this.aggnombre.Location = new System.Drawing.Point(298, 142);
             this.aggnombre.Name = "aggnombre";
             this.aggnombre.Size = new System.Drawing.Size(282, 22);
             this.aggnombre.TabIndex = 0;
-            // 
-            // aggapellido
-            // 
+
+            // Configuración del campo 'Apellido'
             this.aggapellido.Location = new System.Drawing.Point(298, 202);
             this.aggapellido.Name = "aggapellido";
             this.aggapellido.Size = new System.Drawing.Size(282, 22);
             this.aggapellido.TabIndex = 1;
-            // 
-            // aggemail
-            // 
+
+            // Configuración del campo 'Email'
             this.aggemail.Location = new System.Drawing.Point(298, 261);
             this.aggemail.Name = "aggemail";
             this.aggemail.Size = new System.Drawing.Size(282, 22);
             this.aggemail.TabIndex = 2;
-            // 
-            // label1
-            // 
+
+            // Título principal
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label1.Location = new System.Drawing.Point(225, 55);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(357, 41);
             this.label1.TabIndex = 3;
             this.label1.Text = "CREAR CLIENTE ✔️";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // label2
-            // 
+
+            // Etiqueta 'Nombre'
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label2.Location = new System.Drawing.Point(155, 139);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(109, 25);
             this.label2.TabIndex = 4;
             this.label2.Text = "NOMBRE :";
-            // 
-            // label3
-            // 
+
+            // Etiqueta 'Apellido'
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label3.Location = new System.Drawing.Point(155, 198);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(120, 25);
             this.label3.TabIndex = 5;
             this.label3.Text = "APELLIDO :";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
-            // 
-            // label4
-            // 
+
+            // Etiqueta 'Email'
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label4.Location = new System.Drawing.Point(155, 261);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(83, 25);
             this.label4.TabIndex = 6;
             this.label4.Text = "EMAIL :";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
-            // 
-            // btncrearenbase
-            // 
+
+            // Botón 'Guardar'
             this.btncrearenbase.BackColor = System.Drawing.Color.LightSeaGreen;
             this.btncrearenbase.Location = new System.Drawing.Point(356, 341);
             this.btncrearenbase.Name = "btncrearenbase";
@@ -122,9 +116,8 @@ namespace GestionDeClientes
             this.btncrearenbase.TabIndex = 7;
             this.btncrearenbase.Text = "GUARDAR";
             this.btncrearenbase.UseVisualStyleBackColor = false;
-            // 
-            // CrearCli
-            // 
+
+            // Configuración del formulario
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::GestionDeClientes.Properties.Resources.s;
@@ -140,11 +133,10 @@ namespace GestionDeClientes
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "CrearCli";
-            this.Text = "AgregarCli";
+            this.Text = "Agregar Cliente";
             this.Load += new System.EventHandler(this.CrearCli_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
